@@ -1,0 +1,42 @@
+@import 'variables';
+@import 'screen';
+@import 'modules';
+
+h1.page-title {
+  font-family: $font-stack;
+  font-weight:300;
+}
+
+h2.page-description {
+  font-size:2.2rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+h2.post-title, h1.post-title {
+  font-family: $font-stack;
+  font-weight:600;
+  -webkit-font-smoothing: antialiased;
+  font-size:3.6rem;
+}
+
+h2.post-title {
+  margin:20px 0 0;
+  font-weight:300;
+  text-align:center;
+}
+
+.read-next-story h2 {
+  font-family: $font-stack;
+  font-weight:300;
+  -webkit-font-smoothing: antialiased;
+}
+
+.post-footer .share {
+  position:relative;
+  top:auto;
+  left:auto;
+}
+
+.no-touchevents {
+  .home-posts header.post-header {display:none;}
+}

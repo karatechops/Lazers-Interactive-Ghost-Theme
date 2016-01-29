@@ -1,0 +1,52 @@
+
+// Post Thumbnail Module
+.post-thumbnail-container {
+
+  position:relative;
+  line-height:0;
+
+  img {
+    width:100%;
+    height: auto;
+    border:1px solid rgba(0,0,0,.06);
+  }
+
+  .title-container {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background:rgba(0,0,0,0);
+
+    p {
+      font-family: $font-stack;
+      font-weight:300;
+      width:85%;
+      font-size:3rem;
+      line-height:3rem;
+      color:#fff;
+      text-align:center;
+      margin:0;
+      -webkit-font-smoothing: antialiased;
+      opacity:0;
+
+      @include centerer;
+    }
+  }
+
+}
+
+.no-touchevents {
+  .title-container {
+    @include transition(background .5s);
+
+    p{ @include transition(opacity .5s); }
+
+    &:hover {
+      background:rgba(0,0,0,.8);
+
+      p { opacity: 1 }
+    }
+  }
+}
