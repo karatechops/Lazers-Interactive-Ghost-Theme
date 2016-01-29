@@ -24,15 +24,33 @@ gulp.task('browser-sync', ['sass'], function() {
 gulp.task('sass', function() {
   return gulp.src("src/scss/app.scss")
     .pipe(sass().on('error', sass.logError))
-    .pipe(uglifycss())
     .pipe(gulp.dest("assets/css"))
     .pipe(browserSync.stream());
+});
+
+/**
+ * Compile sass into minified CSS
+ */
+gulp.task('sass-prod', function() {
+  return gulp.src("src/scss/app.scss")
+    .pipe(sass().on('error', sass.logError))
+    .pipe(uglifycss())
+    .pipe(gulp.dest("assets/css"))
 });
 
 /**
  * Concat JS files
  */
 gulp.task('scripts', function() {
+  return gulp.src(['src/js/jquery.fitvids.js', 'src/js/modernizr-custom.js', 'src/js/index.js'])
+    .pipe(concat('index.js'))
+    .pipe(gulp.dest('assets/js/'))
+});
+
+/**
+ * Concat and uglify JS files
+ */
+gulp.task('scripts-prod', function() {
   return gulp.src(['src/js/jquery.fitvids.js', 'src/js/modernizr-custom.js', 'src/js/index.js'])
     .pipe(concat('index.js'))
     .pipe(uglify())
@@ -50,5 +68,5 @@ gulp.task('watch', ['browser-sync'], function() {
  * Build task for deployment
  */
 gulp.task('build', function(){
-  gulp.start('scripts', 'sass')
+  gulp.start('scripts-prod', 'sass-prod')
 })
